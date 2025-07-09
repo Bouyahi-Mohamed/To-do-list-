@@ -1,15 +1,18 @@
-
-
+import {tasks} from '../data/TaskList.js';
+import {render} from '../index.js';
 
 
 function addTask(){
-    let btnAdd = document.querySelector("#add-task")
-    btnAdd.addEventListener("click",()=>{
 
-        console.log("the elemet click");
-        
+    let btnadd = document.getElementById("add-task")
+    btnadd.addEventListener("click",()=>{
 
+       let task = prompt("Enter the task name: ", "No tasks added yet.")
+       tasks.push({ name: task, date: new Date().toLocaleDateString() });
+       console.log(tasks);
+       render();
     })
+
 }
 //
 
