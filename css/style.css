@@ -4,22 +4,28 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #350080; 
-    
+    background-color: #350080; /* لون الخلفية العام */
 }
 
 #root{
     width: 60%;
-    height: 300px;
+   
     margin: 0 auto;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff; /* Light grey background */
-    border: #350080 solid 2px; /* Purple border */
+    background-color: #f0f0f0;; 
+    border: #350080 solid 2px; 
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#task-list{
+    max-height: 430px;         /* ← الحد الأقصى للارتفاع */
+    overflow-y: auto; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
 }
 #app{
     width: 100%;
@@ -29,20 +35,28 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: #6009d8; 
-    border-radius: 10px 10px 0 0; /* Rounded corners on top */
+    border-radius: 10px 10px 0 0; 
 }
 
 #task-list-items{
     width: 90%;
-    margin: 20px auto;
+    margin: 13px auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(247, 253, 247);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.835);
+    background-color: #ffffff; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    transition:  0.3s ease;
     border-radius: 10px;
-    height: 60px;
+    height: auto;
+    padding: 3px;
+}
+#task-list-items:hover{
+  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.422);
+
+    
 }
 
 #app-icon{
@@ -108,4 +122,10 @@ body{
 #date-task{
     font-weight: 500;
     margin-right: 15px;
+}
+#show-task{
+   margin-left: 15px;
+}
+#imgs-task{
+   margin-right: 15px;
 }

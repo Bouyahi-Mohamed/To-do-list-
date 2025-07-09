@@ -7,12 +7,14 @@ function addTask(){
     let btnadd = document.getElementById("add-task")
     btnadd.addEventListener("click",()=>{
 
-       let task = prompt("Enter the task name: ", "No tasks added yet.")
-       tasks.push({ name: task, date: new Date().toLocaleDateString() });
-       console.log(tasks);
-       render();
+       let task = prompt("Enter the task name: ", "No tasks added yet.");
+       if (task && task.trim() !== "") {
+           tasks.push({ name: task.trim(), date: new Date().toLocaleDateString() });
+           localStorage.setItem("tasks", JSON.stringify(tasks));
+           console.log(tasks);
+           render();
+       }
     })
-
 }
 //
 
