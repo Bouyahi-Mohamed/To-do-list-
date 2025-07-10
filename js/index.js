@@ -3,7 +3,17 @@ import {tasks} from './data/TaskList.js';
 import {addTask , updateTask , checkTask , deleteTask} from './function/function.js';
 let html = '';
 function render() {
-    for (let i = 0; i < tasks.length; i++) {
+    // Clear the existing HTML content
+    document.getElementById('task-list').innerHTML = '';
+    // Iterate through the tasks and generate HTML
+    if (tasks.length === 0) {
+        html = `<div class="no-tasks">No tasks added yet.</div>`;
+        document.getElementById('task-list').innerHTML = html;
+        html = ''; // Reset html for next render
+        return; 
+      
+    } else {
+        for (let i = 0; i < tasks.length; i++) {
 
     html += `
     <div id="task-list-items" class="task-list-item">
@@ -33,6 +43,9 @@ function render() {
  checkTask();
  deleteTask();
 }
+
+    }
+    
 render();
 addTask();
 updateTask();
