@@ -47,17 +47,36 @@ body{
     align-items: center;
     background-color: #ffffff; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-    transition:  0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 10px;
     height: auto;
     padding: 3px;
 }
-#task-list-items:hover{
-  
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.422);
 
-    
+
+.task-list-item{
+    width: 90%;
+    margin: 13px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    height: auto;
+    padding: 3px;
+    opacity: 1;
+    transform: translateY(0);
 }
+
+.task-list-item:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.422);
+    transform: translateY(-2px);
+}
+
+
 
 #app-icon{
     width: 40px;
@@ -100,18 +119,34 @@ body{
 }
 
 .btn-task{
- background-color: transparent;
- border: none;
- margin-left: 10px;
- cursor: pointer;
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
 
+.btn-task:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.btn-task:active {
+    transform: scale(0.95);
 }
 
 .img-task{
-    
     width: 30px;
     height: 30px;
+    transition: opacity 0.2s ease;
 }
+
+.btn-task:hover .img-task {
+    opacity: 0.8;
+}
+
 
 #name-task{
     font-size: 18px;

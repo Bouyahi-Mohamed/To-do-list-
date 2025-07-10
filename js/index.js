@@ -6,7 +6,7 @@ function render() {
     for (let i = 0; i < tasks.length; i++) {
 
     html += `
-    <div id="task-list-items" class="task-list-item}">
+    <div id="task-list-items" class="task-list-item">
         <div id="show-task " class="show-task ${tasks[i].completed ? 'completed' : ''}">
             <div id="name-task">${tasks[i].name}</div>
             <div id="date-task">date : <span>${tasks[i].date}</span> </div>
@@ -29,9 +29,7 @@ function render() {
     document.getElementById('task-list').innerHTML = html;
     html = ''; // Reset html for next render
 
- updateTask();
- checkTask();
- deleteTask();
+ 
 }
 render();
  addTask();
