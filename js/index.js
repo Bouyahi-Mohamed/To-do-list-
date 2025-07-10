@@ -29,12 +29,13 @@ function render() {
     document.getElementById('task-list').innerHTML = html;
     html = ''; // Reset html for next render
 
- 
-}
-render();
- addTask();
  updateTask();
  checkTask();
  deleteTask();
-
+}
+render();
+addTask();
+updateTask();
+checkTask();
+deleteTask();
 export { render };
