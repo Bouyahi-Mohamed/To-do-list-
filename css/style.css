@@ -129,3 +129,7 @@ body{
 #imgs-task{
    margin-right: 15px;
 }
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}

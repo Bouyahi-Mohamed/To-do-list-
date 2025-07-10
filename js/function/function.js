@@ -7,11 +7,16 @@ function addTask(){
     let btnadd = document.getElementById("add-task")
     btnadd.addEventListener("click",()=>{
 
-       let task = prompt("Enter the task name: ", "No tasks added yet.");
+           let task = prompt("Enter the task name: ", "No tasks added yet.");
        if (task && task.trim() !== "") {
-           tasks.push({ name: task.trim(), date: new Date().toLocaleDateString() });
+           tasks.push(
+                    {   id: tasks.length + 1, // Incremental ID based on current length
+                        name: task.trim(),
+                        date: new Date().toLocaleDateString() ,
+                        completed: false
+                    }
+                    );
            localStorage.setItem("tasks", JSON.stringify(tasks));
-           console.log(tasks);
            render();
        }
     })
@@ -20,36 +25,57 @@ function addTask(){
 
 function updateTask(){
 
-    let btnUpdate = document.querySelector(".js-btn-update")
-    btnUpdate.addEventListener("click",()=>{
+    let btnUpdate = document.querySelectorAll(".js-btn-update")
+    btnUpdate.forEach((button,index) => {
+        button.addEventListener("click",()=>{
 
-        console.log("the elemet click");
-        
-
+            let newTaskName = prompt(`you are about to change ${tasks[index].name}: `, tasks[index].name);
+            if (newTaskName && newTaskName.trim() !== "") {
+                tasks[index].name = newTaskName.trim();
+                tasks[index].date = new Date().toLocaleDateString(); // Update date to current date
+                // Update the task in localStorage
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                render();
+            }
+        })
     })
+
 }
 
 
 function checkTask(){
 
-    let btnCheck = document.querySelector(".js-btn-check")
-    btnCheck.addEventListener("click",()=>{
+    let btnCheck = document.querySelectorAll(".js-btn-check")
+    btnCheck.forEach((button,index) => {
+        button.addEventListener("click",()=>{
 
-        console.log("the elemet click");
-        
+            tasks[index].completed = !tasks[index].completed;
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            render();
 
+        })
     })
-}
 
+}
+// Function to delete a task
+// This function will remove the task from the tasks array and update localStorage
 
 function deleteTask(){
 
-    let btnDelete = document.querySelector(".js-btn-delete")
-    btnDelete.addEventListener("click",()=>{
-
-        console.log("the elemet click");
+    let btnDelete = document.querySelectorAll(".js-btn-delete")
+    btnDelete.forEach((button,index) => {
+        button.addEventListener("click",()=>{
+        // Remove the task from the tasks array
+        // and update localStorage
+        // Ask for confirmation before deleting
+        var ask = confirm("Are you sure you want to delete this task?");
+        if (!ask) return; // If user cancels, do nothing
         
+        // Remove the task from the tasks array
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        render();
 
     })
-}
+})}
 export {addTask , updateTask , checkTask , deleteTask};
